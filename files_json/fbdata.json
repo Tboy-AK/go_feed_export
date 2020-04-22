@@ -1,8 +1,8 @@
 {
- "FeedStream": [
-  "Facebook feeds",
-  "Hey, here's my cool new selfie",
-  "What is code?"
- ],
- "FeedCount": 3
+  "FeedStream": [
+    "Facebook feeds",
+    "Hey, here's my cool new selfie",
+    "What is code?"
+  ],
+  "FeedCount": 3
 }

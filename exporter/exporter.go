@@ -19,7 +19,7 @@ func ScrollFeeds(platforms ...week3.SocialMedia) {
 	}
 }
 
-// Export writes all feed into corresponding txt files
+// ExportTXT writes all feed into corresponding txt files
 func ExportTXT(u week3.SocialMedia, filename string) error {
 	f, err := os.OpenFile("./files_txt/"+filename, os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
@@ -53,7 +53,7 @@ func ExportJSON(u week3.SocialMedia, filename string) error {
 		data.FeedStream = append(data.FeedStream, fd)
 	}
 	data.FeedCount = len((data.FeedStream))
-	file, _ := json.MarshalIndent(data, "", " ")
+	file, _ := json.MarshalIndent(data, "", "  ")
 	n, err := f.Write([]byte(file))
 	if err != nil {
 		return errors.New("an error occured writing to file: " + err.Error())
@@ -74,7 +74,7 @@ func ExportXML(u week3.SocialMedia, filename string) error {
 		data.FeedStream = append(data.FeedStream, fd)
 	}
 	data.FeedCount = len((data.FeedStream))
-	file, _ := xml.MarshalIndent(data, "", " ")
+	file, _ := xml.MarshalIndent(data, "", "  ")
 	n, err := f.Write([]byte(file))
 	if err != nil {
 		return errors.New("an error occured writing to file: " + err.Error())
