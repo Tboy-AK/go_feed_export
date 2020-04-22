@@ -45,6 +45,16 @@ func main() {
 	}
 	fmt.Println("---------------------------------")
 
+	// Create yaml files for feed
+	err = exporter.ExportYAML(fb, "fbdata.yaml")
+	err = exporter.ExportYAML(twtr, "twtrdata.yaml")
+	err = exporter.ExportYAML(lnkdin, "lnkdin.yaml")
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("---------------------------------")
+
 	// Print feed to screen
 	exporter.ScrollFeeds(fb, twtr, lnkdin)
 }

@@ -7,6 +7,8 @@ import (
 	"fmt"
 	week3 "go_feed_export"
 	"os"
+
+	yaml "gopkg.in/yaml.v2"
 )
 
 // ScrollFeeds prints all social media feeds
@@ -80,6 +82,27 @@ func ExportXML(u week3.SocialMedia, filename string) error {
 		return errors.New("an error occured writing to file: " + err.Error())
 	}
 	fmt.Printf("wrote %d bytes of xml\n", n)
+	fmt.Println()
+	return nil
+}
+
+// ExportYAML writes all feed into corresponding xml files
+func ExportYAML(u week3.SocialMedia, filename string) error {
+	data := FeedPresentation{}
+	f, err := os.OpenFile("./files_yaml/"+filename, os.O_CREATE|os.O_WRONLY, 0755)
+	if err != nil {
+		return errors.New("an error occured opening the file: " + err.Error())
+	}
+	for _, fd := range u.Feed() {
+		data.FeedStream = append(data.FeedStream, fd+"\n")
+	}
+	data.FeedCount = len((data.FeedStream))
+	file, _ := yaml.Marshal(data)
+	n, err := f.Write([]byte(file))
+	if err != nil {
+		return errors.New("an error occured writing to file: " + err.Error())
+	}
+	fmt.Printf("wrote %d bytes of yaml\n", n)
 	fmt.Println()
 	return nil
 }
