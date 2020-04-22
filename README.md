@@ -9,3 +9,8 @@ This is a go module that supplies social media feeds to either/all:
 
 Each file type in their respective folders
 Each file representing a particular social media platform
+
+## Implementation
+
+In your terminal or console:
+`go run ./cmd`
