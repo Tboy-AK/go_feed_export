@@ -1,4 +1,4 @@
-# go_feed_export
+# go_feed_export module
 
 This is a go module that supplies social media feeds to either/all:
 1. Console
